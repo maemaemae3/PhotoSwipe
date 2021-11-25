@@ -51,11 +51,12 @@ var PhotoSwipeUI_Default =
 			loadingIndicatorDelay: 1000, // 2s
 			
 			addCaptionHTMLFn: function(item, captionEl /*, isFake */) {
-				if(!item.title) {
+				if(!item.title && !item.description) {
 					captionEl.children[0].innerHTML = '';
 					return false;
 				}
-				captionEl.children[0].innerHTML = item.title;
+				captionEl.children[0].innerHTML = '<div class="pswp__caption_title">' + item.title + '</div>' + '<div class="pswp__caption_description"></div>';
+				captionEl.children[0].children[1].innerHTML = item.description.replaceAll('\\n', '<br/>');
 				return true;
 			},
 

@@ -1,6 +1,6 @@
-/*! PhotoSwipe Default UI - 4.1.3 - 2019-01-08
+/*! PhotoSwipe Default UI - 4.1.3 - 2021-11-25
 * http://photoswipe.com
-* Copyright (c) 2019 Dmitry Semenov; */
+* Copyright (c) 2021 Dmitry Semenov; */
 /**
 *
 * UI on top of main sliding area (caption, arrows, close button, etc.).
@@ -54,11 +54,12 @@ var PhotoSwipeUI_Default =
 			loadingIndicatorDelay: 1000, // 2s
 			
 			addCaptionHTMLFn: function(item, captionEl /*, isFake */) {
-				if(!item.title) {
+				if(!item.title && !item.description) {
 					captionEl.children[0].innerHTML = '';
 					return false;
 				}
-				captionEl.children[0].innerHTML = item.title;
+				captionEl.children[0].innerHTML = '<div class="pswp__caption_title">' + item.title + '</div>' + '<div class="pswp__caption_description"></div>';
+				captionEl.children[0].children[1].innerHTML = item.description.replaceAll('\\n', '<br/>');
 				return true;
 			},
 
