@@ -1,4 +1,4 @@
-/*! PhotoSwipe Default UI - 4.1.3 - 2021-11-25
+/*! PhotoSwipe Default UI - 4.1.3 - 2021-11-27
 * http://photoswipe.com
 * Copyright (c) 2021 Dmitry Semenov; */
 /**
@@ -58,8 +58,12 @@ var PhotoSwipeUI_Default =
 					captionEl.children[0].innerHTML = '';
 					return false;
 				}
-				captionEl.children[0].innerHTML = '<div class="pswp__caption_title">' + item.title + '</div>' + '<div class="pswp__caption_description"></div>';
-				captionEl.children[0].children[1].innerHTML = item.description.replaceAll('\\n', '<br/>');
+				if(item.title) {
+					captionEl.children[0].innerHTML = '<div class="pswp__caption_title">' + item.title + '</div>' + '<div class="pswp__caption_description"></div>';
+				}
+				if(item.description) {
+					captionEl.children[0].children[1].innerHTML = item.description.replaceAll('\\n', '<br/>');
+				}
 				return true;
 			},
 

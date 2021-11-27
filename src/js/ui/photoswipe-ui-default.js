@@ -55,8 +55,12 @@ var PhotoSwipeUI_Default =
 					captionEl.children[0].innerHTML = '';
 					return false;
 				}
-				captionEl.children[0].innerHTML = '<div class="pswp__caption_title">' + item.title + '</div>' + '<div class="pswp__caption_description"></div>';
-				captionEl.children[0].children[1].innerHTML = item.description.replaceAll('\\n', '<br/>');
+				if(item.title) {
+					captionEl.children[0].innerHTML = '<div class="pswp__caption_title">' + item.title + '</div>' + '<div class="pswp__caption_description"></div>';
+				}
+				if(item.description) {
+					captionEl.children[0].children[1].innerHTML = item.description.replaceAll('\\n', '<br/>');
+				}
 				return true;
 			},
 
